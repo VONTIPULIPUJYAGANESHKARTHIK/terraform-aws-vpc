@@ -4,7 +4,11 @@ resource "aws_vpc" "main" {
     enable_dns_support = true
 
 
-    tags = {
-        Name = "roboshop-dev"
-    }
+    tags = merge(
+        var.vpc_tags,
+        local.common_tags,
+        {
+            Name = local.common_name
+        }
+    )
 }
