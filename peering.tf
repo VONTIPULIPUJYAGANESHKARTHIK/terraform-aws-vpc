@@ -13,6 +13,7 @@ resource "aws_vpc_peering_connection" "default" {
   }
   tags = merge(
     var.vpc_peering_tags,
+    local.common_tags,
     {
         Name = "${local.common_name}-default"
     }
